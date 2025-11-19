@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aditya Kumar — Flutter Developer</title>
+  <meta name="description" content="Aditya Kumar — Flutter developer. Portfolio showcasing Pomodoro app, Replaner, NMT Doctor and more. Built with Flutter, Riverpod, Firebase and Isar." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Color system using HSL variables — tweak hue & saturation here */
+    :root{
+      --bg-h: 230; /* base hue */
+      --accent-h: 205; /* accent hue */
+      --muted-h: 210;
+      --card-light: 14%;
+      --card-dark: 8%;
+    }
+
+    /* Utility to create saturated HSL colors easily */
+    .hsl-bg{ background: hsl(var(--bg-h) 20% 6%); }
+    .glass { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); backdrop-filter: blur(6px); }
+
+    /* Cards with varying saturation — noticeable but subtle */
+    .card-1 { background-color: hsl(var(--accent-h) 48% 12%); border: 1px solid hsl(var(--accent-h) 60% 16%); }
+    .card-2 { background-color: hsl(calc(var(--accent-h) + 20) 36% 11%); border: 1px solid hsl(calc(var(--accent-h) + 20) 48% 14%); }
+    .card-3 { background-color: hsl(calc(var(--accent-h) - 30) 30% 13%); border: 1px solid hsl(calc(var(--accent-h) - 30) 42% 15%); }
+
+    /* Project tag chips using HSL saturation on same hue */
+    .chip { background: hsl(var(--muted-h) 28% 14%); color: hsl(0 0% 98%); padding: .25rem .6rem; border-radius: 999px; font-weight:600; font-size:.8rem; }
+
+    /* thin border glow using HSL */
+    .accent-outline { box-shadow: 0 6px 20px -12px rgba(25, 120, 255, 0.18); }
+
+    /* responsive max width */
+    .content-wrap { max-width: 1100px; }
+
+    /* small helper for subtle headings */
+    .muted { color: hsl(0 0% 72%); }
+
+    /* Make images nicely rounded */
+    .project-img { width:100%; height:140px; object-fit:cover; border-radius:.5rem; }
+
+  </style>
+</head>
+<body class="hsl-bg text-white min-h-screen antialiased leading-relaxed">
+  <div class="content-wrap mx-auto px-6 py-12">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between mb-12">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-[hsl(205,60%,20%)] to-[hsl(230,50%,12%)] accent-outline">
+          <!-- simple initial avatar -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="white" opacity="0.95" />
+            <path d="M4 20c0-3.314 2.686-6 6-6h4c3.314 0 6 2.686 6 6v1H4v-1z" fill="white" opacity="0.06" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-2xl font-extrabold tracking-tight">Aditya Kumar</h1>
+          <p class="muted text-sm">Flutter Developer • Riverpod & Firebase • Mobile-first</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex gap-6 items-center muted">
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#skills" class="hover:underline">Skills</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+        <a href="#" class="ml-3 px-3 py-2 border rounded-lg text-sm" style="border-color: hsl(var(--accent-h) 60% 16%);">Resume</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="grid md:grid-cols-2 gap-8 items-center mb-12">
+      <div>
+        <h2 class="text-4xl font-extrabold mb-3">I build clean, fast Flutter apps that actually ship. 🚀</h2>
+        <p class="muted mb-6">Mobile-first, performance-aware, and design-conscious — I help take projects from MVP to production-ready. Currently focused on Android-first Flutter apps with Riverpod and Firebase.</p>
+        <div class="flex gap-3">
+          <a href="#projects" class="px-5 py-3 rounded-lg font-semibold" style="background: hsl(var(--accent-h) 58% 18%);">View projects</a>
+          <a href="#contact" class="px-5 py-3 rounded-lg border" style="border-color: hsl(var(--muted-h) 28% 18%);">Hire me</a>
+        </div>
+
+        <div class="mt-8 grid grid-cols-2 gap-3">
+          <div class="glass p-4 rounded-lg">
+            <div class="text-sm muted">Primary stack</div>
+            <div class="font-semibold">Flutter • Riverpod • Firebase</div>
+          </div>
+          <div class="glass p-4 rounded-lg">
+            <div class="text-sm muted">Local storage</div>
+            <div class="font-semibold">Isar • Shared Preferences</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-xl card-1 p-6">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <div class="muted text-sm">Featured project</div>
+            <div class="text-lg font-bold">V_Focused — Pomodoro Timer</div>
+          </div>
+          <div class="chip">Flutter</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1526378724636-8b3d4f3b7a7b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="V_Focused screenshot" class="project-img mb-4" />
+        <p class="muted">A clean Pomodoro timer with circular UI, customizable sessions, and background timers. Built with flutter_riverpod and sleek_circular_slider.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="#projects" class="px-4 py-2 rounded bg-white/6 text-sm">See project</a>
+          <a href="#contact" class="px-4 py-2 rounded border text-sm" style="border-color:hsl(var(--accent-h) 60% 16%);">Get the code</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="mb-12">
+      <div class="flex items-center justify-between mb-6">
+        <h3 class="text-2xl font-extrabold">Selected Projects</h3>
+        <p class="muted">Android-first, production-ready examples</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Card 1 -->
+        <article class="p-5 rounded-lg card-2">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <h4 class="font-bold text-lg">V_Focused</h4>
+              <div class="muted text-sm">Pomodoro productivity app</div>
+            </div>
+            <div class="chip">Flutter • Riverpod</div>
+          </div>
+          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="V_Focused" />
+          <p class="muted text-sm">Focus timer with circular UI, short/long break support, background service, and customizable sessions.</p>
+          <div class="mt-4 flex gap-2">
+            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--accent-h) 50% 15%);">Live demo</a>
+            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--muted-h) 28% 18%);">Source</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="p-5 rounded-lg card-3">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <h4 class="font-bold text-lg">Replaner</h4>
+              <div class="muted text-sm">Smart scrap management</div>
+            </div>
+            <div class="chip">Flutter • Firebase</div>
+          </div>
+          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1581091870622-3b4d6e5f4d1f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Replaner" />
+          <p class="muted text-sm">Connects customers with ragmen (scrap dealers), booking flows, location matching, and a smooth customer interface.</p>
+          <div class="mt-4 flex gap-2">
+            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--accent-h) 50% 15%);">Case study</a>
+            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--muted-h) 28% 18%);">Source</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="p-5 rounded-lg card-1">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <h4 class="font-bold text-lg">NMT Doctor</h4>
+              <div class="muted text-sm">Blood testing & health services</div>
+            </div>
+            <div class="chip">Flutter • Firebase</div>
+          </div>
+          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1580281657521-6aeb8b5b0c2a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="NMT Doctor" />
+          <p class="muted text-sm">Booking tests, viewing reports, and account management — designed for a startup MVP in medical labs domain.</p>
+          <div class="mt-4 flex gap-2">
+            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--accent-h) 50% 15%);">Prototype</a>
+            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--muted-h) 28% 18%);">Source</a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="p-5 rounded-lg card-2">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <h4 class="font-bold text-lg">Habit Tracker</h4>
+              <div class="muted text-sm">Daily routine & streaks</div>
+            </div>
+            <div class="chip">Isar • Riverpod</div>
+          </div>
+          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Habit Tracker" />
+          <p class="muted text-sm">Offline-first habit tracking with local DB (Isar), streaks, and lightweight UI for daily use.</p>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="p-5 rounded-lg card-3">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <h4 class="font-bold text-lg">Portfolio Web App</h4>
+              <div class="muted text-sm">This site — Flutter Web & HTML</div>
+            </div>
+            <div class="chip">Flutter Web • GitHub Pages</div>
+          </div>
+          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Portfolio" />
+          <p class="muted text-sm">Responsive one-page portfolio showcasing projects, contact, and deploy-ready for GitHub Pages.</p>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="p-5 rounded-lg card-1">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <h4 class="font-bold text-lg">AI Q&A Listener (concept)</h4>
+              <div class="muted text-sm">Voice-driven AI Q&A</div>
+            </div>
+            <div class="chip">ChatGPT API • LangChain</div>
+          </div>
+          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1581276879432-15a9a5b6bb8f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="AI Q&A" />
+          <p class="muted text-sm">Prototype idea combining voice input and ChatGPT for an interactive assistant app. Research & POC stage.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mb-12 grid md:grid-cols-3 gap-6 items-start">
+      <div class="md:col-span-2">
+        <h3 class="text-2xl font-extrabold mb-3">About me</h3>
+        <p class="muted mb-4">I’m Aditya — a student and Flutter developer building Android-first cross-platform apps. I focus on clean architecture, readable code, and shipping fast MVPs. I love solving tricky UI bugs, setting up Firebase auth flows, and optimizing app performance for real users.</p>
+
+        <h4 class="text-lg font-bold mt-4 mb-2">What I enjoy building</h4>
+        <ul class="muted list-disc pl-5 space-y-2">
+          <li>Productivity tools (timers, habit trackers)</li>
+          <li>Local-first apps with Isar</li>
+          <li>Firebase-backed startup MVPs</li>
+          <li>Polished UI with attention to performance</li>
+        </ul>
+      </div>
+
+      <aside class="p-5 rounded-lg glass">
+        <div class="flex items-center gap-4 mb-3">
+          <div class="w-14 h-14 rounded-md bg-[hsl(230,45%,12%)] flex items-center justify-center">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="white" opacity="0.9"/></svg>
+          </div>
+          <div>
+            <div class="font-semibold">Aditya Kumar</div>
+            <div class="muted text-sm">IIT aspirant • Student • Flutter dev</div>
+          </div>
+        </div>
+        <div class="muted text-sm">Available for freelance app maintenance, bug fixes, feature builds, and consultation. I ship readable code and provide clear explanations.</div>
+      </aside>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="mb-12">
+      <h3 class="text-2xl font-extrabold mb-4">Skills & Tools</h3>
+      <div class="flex flex-wrap gap-3">
+        <span class="chip">Flutter</span>
+        <span class="chip">Dart</span>
+        <span class="chip">Riverpod</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">Isar</span>
+        <span class="chip">Git</span>
+        <span class="chip">Android</span>
+        <span class="chip">Tailwind</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mb-12 grid md:grid-cols-2 gap-6 items-start">
+      <div>
+        <h3 class="text-2xl font-extrabold mb-3">Let’s build something</h3>
+        <p class="muted mb-4">Want me to maintain your app, squash bugs, or add a new feature? Send a quick brief — link to repo, screenshots, and the issue list help me estimate and start fast.</p>
+
+        <div class="space-y-3">
+          <div class="p-4 rounded-lg glass">
+            <div class="text-sm muted">Email</div>
+            <a href="mailto:aditya@example.com" class="font-semibold block mt-1">aditya@example.com</a>
+          </div>
+          <div class="p-4 rounded-lg glass">
+            <div class="text-sm muted">GitHub</div>
+            <a href="#" class="font-semibold block mt-1">github.com/your-username</a>
+          </div>
+        </div>
+      </div>
+
+      <form class="p-6 rounded-lg glass">
+        <label class="text-sm muted">Project brief</label>
+        <textarea placeholder="Short summary, repo link, issues, deadline" class="w-full mt-2 p-3 rounded bg-transparent border" style="border-color: hsl(var(--muted-h) 24% 16%); height:140px"></textarea>
+        <div class="mt-4 flex gap-3">
+          <input type="text" placeholder="Your name" class="p-2 rounded bg-transparent border" style="border-color: hsl(var(--muted-h) 24% 16%);" />
+          <input type="email" placeholder="Email" class="p-2 rounded bg-transparent border" style="border-color: hsl(var(--muted-h) 24% 16%);" />
+        </div>
+        <div class="mt-4">
+          <button type="button" class="px-4 py-2 rounded" style="background: hsl(var(--accent-h) 58% 18%);">Send message</button>
+        </div>
+      </form>
+    </section>
+
+    <footer class="py-6 border-t mt-8" style="border-color: hsl(var(--muted-h) 20% 14%);">
+      <div class="flex items-center justify-between muted">
+        <div>© <span id="year"></span> Aditya Kumar — Built with ❤️ and Flutter</div>
+        <div class="flex gap-3">
+          <a href="#" class="muted">GitHub</a>
+          <a href="#" class="muted">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
