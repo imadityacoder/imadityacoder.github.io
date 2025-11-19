@@ -1,304 +1,1107 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aditya Kumar — Flutter Developer</title>
-  <meta name="description" content="Aditya Kumar — Flutter developer. Portfolio showcasing Pomodoro app, Replaner, NMT Doctor and more. Built with Flutter, Riverpod, Firebase and Isar." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Color system using HSL variables — tweak hue & saturation here */
-    :root{
-      --bg-h: 230; /* base hue */
-      --accent-h: 205; /* accent hue */
-      --muted-h: 210;
-      --card-light: 14%;
-      --card-dark: 8%;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Kumar - Flutter Developer & JEE Aspirant</title>
 
-    /* Utility to create saturated HSL colors easily */
-    .hsl-bg{ background: hsl(var(--bg-h) 20% 6%); }
-    .glass { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); backdrop-filter: blur(6px); }
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    /* Cards with varying saturation — noticeable but subtle */
-    .card-1 { background-color: hsl(var(--accent-h) 48% 12%); border: 1px solid hsl(var(--accent-h) 60% 16%); }
-    .card-2 { background-color: hsl(calc(var(--accent-h) + 20) 36% 11%); border: 1px solid hsl(calc(var(--accent-h) + 20) 48% 14%); }
-    .card-3 { background-color: hsl(calc(var(--accent-h) - 30) 30% 13%); border: 1px solid hsl(calc(var(--accent-h) - 30) 42% 15%); }
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    /* Project tag chips using HSL saturation on same hue */
-    .chip { background: hsl(var(--muted-h) 28% 14%); color: hsl(0 0% 98%); padding: .25rem .6rem; border-radius: 999px; font-weight:600; font-size:.8rem; }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-    /* thin border glow using HSL */
-    .accent-outline { box-shadow: 0 6px 20px -12px rgba(25, 120, 255, 0.18); }
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
 
-    /* responsive max width */
-    .content-wrap { max-width: 1100px; }
-
-    /* small helper for subtle headings */
-    .muted { color: hsl(0 0% 72%); }
-
-    /* Make images nicely rounded */
-    .project-img { width:100%; height:140px; object-fit:cover; border-radius:.5rem; }
-
-  </style>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="hsl-bg text-white min-h-screen antialiased leading-relaxed">
-  <div class="content-wrap mx-auto px-6 py-12">
 
-    <!-- Header -->
-    <header class="flex items-center justify-between mb-12">
-      <div class="flex items-center gap-4">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-[hsl(205,60%,20%)] to-[hsl(230,50%,12%)] accent-outline">
-          <!-- simple initial avatar -->
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="white" opacity="0.95" />
-            <path d="M4 20c0-3.314 2.686-6 6-6h4c3.314 0 6 2.686 6 6v1H4v-1z" fill="white" opacity="0.06" />
-          </svg>
-        </div>
-        <div>
-          <h1 class="text-2xl font-extrabold tracking-tight">Aditya Kumar</h1>
-          <p class="muted text-sm">Flutter Developer • Riverpod & Firebase • Mobile-first</p>
-        </div>
-      </div>
-      <nav class="hidden md:flex gap-6 items-center muted">
-        <a href="#projects" class="hover:underline">Projects</a>
-        <a href="#about" class="hover:underline">About</a>
-        <a href="#skills" class="hover:underline">Skills</a>
-        <a href="#contact" class="hover:underline">Contact</a>
-        <a href="#" class="ml-3 px-3 py-2 border rounded-lg text-sm" style="border-color: hsl(var(--accent-h) 60% 16%);">Resume</a>
-      </nav>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- ========== HEADER / NAVIGATION ========== -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm transition-all duration-300">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="#home"
+                    class="text-2xl font-bold bg-gradient-to-r from-primary-500 to-purple-600 bg-clip-text text-transparent">
+                    Adipage
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#testimonials" class="nav-link">Testimonials</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <!-- Dark Mode Toggle & Mobile Menu Button -->
+                <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <i class="fas fa-moon dark:hidden text-gray-700"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button"
+                        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="nav-link-mobile">Home</a>
+                    <a href="#about" class="nav-link-mobile">About</a>
+                    <a href="#skills" class="nav-link-mobile">Skills</a>
+                    <a href="#projects" class="nav-link-mobile">Projects</a>
+                    <a href="#experience" class="nav-link-mobile">Experience</a>
+                    <a href="#testimonials" class="nav-link-mobile">Testimonials</a>
+                    <a href="#contact" class="nav-link-mobile">Contact</a>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="grid md:grid-cols-2 gap-8 items-center mb-12">
-      <div>
-        <h2 class="text-4xl font-extrabold mb-3">I build clean, fast Flutter apps that actually ship. 🚀</h2>
-        <p class="muted mb-6">Mobile-first, performance-aware, and design-conscious — I help take projects from MVP to production-ready. Currently focused on Android-first Flutter apps with Riverpod and Firebase.</p>
-        <div class="flex gap-3">
-          <a href="#projects" class="px-5 py-3 rounded-lg font-semibold" style="background: hsl(var(--accent-h) 58% 18%);">View projects</a>
-          <a href="#contact" class="px-5 py-3 rounded-lg border" style="border-color: hsl(var(--muted-h) 28% 18%);">Hire me</a>
+    <!-- ========== HERO SECTION ========== -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16 md:pt-20 relative overflow-hidden">
+        <!-- Background Gradient Shapes -->
+        <div class="absolute inset-0 -z-10">
+            <div
+                class="absolute top-20 left-10 w-72 h-72 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob">
+            </div>
+            <div
+                class="absolute top-40 right-10 w-72 h-72 bg-primary-300 dark:bg-primary-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-2000">
+            </div>
+            <div
+                class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300 dark:bg-pink-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-4000">
+            </div>
         </div>
 
-        <div class="mt-8 grid grid-cols-2 gap-3">
-          <div class="glass p-4 rounded-lg">
-            <div class="text-sm muted">Primary stack</div>
-            <div class="font-semibold">Flutter • Riverpod • Firebase</div>
-          </div>
-          <div class="glass p-4 rounded-lg">
-            <div class="text-sm muted">Local storage</div>
-            <div class="font-semibold">Isar • Shared Preferences</div>
-          </div>
-        </div>
-      </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- Hero Content -->
+                <div class="flex-1 text-center md:text-left reveal-element">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
+                        Hi, I'm <span
+                            class="bg-gradient-to-r from-primary-500 to-purple-600 bg-clip-text text-transparent">Aditya
+                            Kumar</span>
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-6">
+                        Flutter Developer & JEE Aspirant
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">
+                        A student, Flutter dev, and future engineer building cool mobile apps while preparing for IIT.
+                        Dreaming big, MIT-level big.
+                    </p>
 
-      <div class="rounded-xl card-1 p-6">
-        <div class="flex items-center justify-between mb-4">
-          <div>
-            <div class="muted text-sm">Featured project</div>
-            <div class="text-lg font-bold">V_Focused — Pomodoro Timer</div>
-          </div>
-          <div class="chip">Flutter</div>
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#contact" class="btn-primary">
+                            <i class="fas fa-envelope mr-2"></i>Contact Me
+                        </a>
+                        <a href="#" class="btn-secondary" download>
+                            <i class="fas fa-download mr-2"></i>Download Resume
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Profile Image -->
+                <div class="flex-1 flex justify-center reveal-element">
+                    <div class="relative p-6">
+                        <div
+                            class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white dark:border-gray-800 shadow-2xl profile-image">
+                            <img src="assets/profile.jpg" alt="Profile" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Decorative Ring -->
+                        <div
+                            class="absolute inset-0 rounded-full border-4 border-primary-500 opacity-20 animate-ping-slow">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1526378724636-8b3d4f3b7a7b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="V_Focused screenshot" class="project-img mb-4" />
-        <p class="muted">A clean Pomodoro timer with circular UI, customizable sessions, and background timers. Built with flutter_riverpod and sleek_circular_slider.</p>
-        <div class="mt-4 flex gap-3">
-          <a href="#projects" class="px-4 py-2 rounded bg-white/6 text-sm">See project</a>
-          <a href="#contact" class="px-4 py-2 rounded border text-sm" style="border-color:hsl(var(--accent-h) 60% 16%);">Get the code</a>
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about"
+                class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
         </div>
-      </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="mb-12">
-      <div class="flex items-center justify-between mb-6">
-        <h3 class="text-2xl font-extrabold">Selected Projects</h3>
-        <p class="muted">Android-first, production-ready examples</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-
-        <!-- Card 1 -->
-        <article class="p-5 rounded-lg card-2">
-          <div class="flex items-start justify-between gap-3 mb-3">
-            <div>
-              <h4 class="font-bold text-lg">V_Focused</h4>
-              <div class="muted text-sm">Pomodoro productivity app</div>
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know me better</p>
             </div>
-            <div class="chip">Flutter • Riverpod</div>
-          </div>
-          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="V_Focused" />
-          <p class="muted text-sm">Focus timer with circular UI, short/long break support, background service, and customizable sessions.</p>
-          <div class="mt-4 flex gap-2">
-            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--accent-h) 50% 15%);">Live demo</a>
-            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--muted-h) 28% 18%);">Source</a>
-          </div>
-        </article>
 
-        <!-- Card 2 -->
-        <article class="p-5 rounded-lg card-3">
-          <div class="flex items-start justify-between gap-3 mb-3">
-            <div>
-              <h4 class="font-bold text-lg">Replaner</h4>
-              <div class="muted text-sm">Smart scrap management</div>
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Bio Column -->
+                <div class="reveal-element">
+                    <h3 class="text-2xl font-bold mb-4">Who I Am</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        Hey! I'm currently studying in Class 9 and preparing for JEE Advanced right from the foundation
+                        stage.
+                        My goal is to crack top engineering colleges like IIT with a scholarship while balancing school,
+                        coding, and coaching like a boss.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        On the tech side, I'm super passionate about mobile development, especially with Flutter. I love
+                        building modern,
+                        fast, and real-world apps that actually solve problems. Each project pushes me a level up in
+                        design, logic, and scalable app architecture.
+                    </p>
+
+                    <h4 class="text-xl font-semibold mb-3">What I'm Good At:</h4>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Flutter, Dart, Riverpod & Firebase</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Clean UI/UX, animations & responsive
+                                design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Background services, timers & local
+                                storage</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-primary-500 mt-1 mr-3"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Problem-solving & shipping actual
+                                products</span>
+                        </li>
+                    </ul>
+
+                    <a href="#" class="btn-primary inline-block" download>
+                        <i class="fas fa-file-pdf mr-2"></i>Download Resume
+                    </a>
+                </div>
+
+                <!-- Learning & Goals Timeline -->
+                <div class="reveal-element">
+                    <h3 class="text-2xl font-bold mb-6">Currently Learning & Goals</h3>
+                    <div class="space-y-6">
+                        <!-- Timeline Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="text-sm text-primary-500 font-semibold">Present</span>
+                                <h4 class="text-lg font-bold mt-1">JEE Advanced Preparation</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Class 9 Foundation</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-2">Preparing for IIT entrance from
+                                    the foundation level - Physics, Chemistry & Math.</p>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="text-sm text-primary-500 font-semibold">Learning</span>
+                                <h4 class="text-lg font-bold mt-1">Advanced Flutter Development</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Mobile App Architecture</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-2">Deep diving into Riverpod state
+                                    management, app optimization & battery-friendly background tasks.</p>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Item 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="text-sm text-primary-500 font-semibold">Goal</span>
+                                <h4 class="text-lg font-bold mt-1">Build Products That Scale</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Startup Dream</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-2">Reach thousands of downloads,
+                                    build my own startup, and become a top-tier engineer (MIT/IIT level).</p>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Item 4 -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="text-sm text-primary-500 font-semibold">Exploring</span>
+                                <h4 class="text-lg font-bold mt-1">AI Integration & Web Dev</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Expanding Skillset</p>
+                                <p class="text-gray-600 dark:text-gray-300 text-sm mt-2">Experimenting with AI agents,
+                                    in-app memory systems, and JavaScript web development.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="chip">Flutter • Firebase</div>
-          </div>
-          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1581091870622-3b4d6e5f4d1f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Replaner" />
-          <p class="muted text-sm">Connects customers with ragmen (scrap dealers), booking flows, location matching, and a smooth customer interface.</p>
-          <div class="mt-4 flex gap-2">
-            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--accent-h) 50% 15%);">Case study</a>
-            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--muted-h) 28% 18%);">Source</a>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="p-5 rounded-lg card-1">
-          <div class="flex items-start justify-between gap-3 mb-3">
-            <div>
-              <h4 class="font-bold text-lg">NMT Doctor</h4>
-              <div class="muted text-sm">Blood testing & health services</div>
-            </div>
-            <div class="chip">Flutter • Firebase</div>
-          </div>
-          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1580281657521-6aeb8b5b0c2a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="NMT Doctor" />
-          <p class="muted text-sm">Booking tests, viewing reports, and account management — designed for a startup MVP in medical labs domain.</p>
-          <div class="mt-4 flex gap-2">
-            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--accent-h) 50% 15%);">Prototype</a>
-            <a class="px-3 py-1 rounded text-sm" style="border:1px solid hsl(var(--muted-h) 28% 18%);">Source</a>
-          </div>
-        </article>
-
-        <!-- Card 4 -->
-        <article class="p-5 rounded-lg card-2">
-          <div class="flex items-start justify-between gap-3 mb-3">
-            <div>
-              <h4 class="font-bold text-lg">Habit Tracker</h4>
-              <div class="muted text-sm">Daily routine & streaks</div>
-            </div>
-            <div class="chip">Isar • Riverpod</div>
-          </div>
-          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Habit Tracker" />
-          <p class="muted text-sm">Offline-first habit tracking with local DB (Isar), streaks, and lightweight UI for daily use.</p>
-        </article>
-
-        <!-- Card 5 -->
-        <article class="p-5 rounded-lg card-3">
-          <div class="flex items-start justify-between gap-3 mb-3">
-            <div>
-              <h4 class="font-bold text-lg">Portfolio Web App</h4>
-              <div class="muted text-sm">This site — Flutter Web & HTML</div>
-            </div>
-            <div class="chip">Flutter Web • GitHub Pages</div>
-          </div>
-          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Portfolio" />
-          <p class="muted text-sm">Responsive one-page portfolio showcasing projects, contact, and deploy-ready for GitHub Pages.</p>
-        </article>
-
-        <!-- Card 6 -->
-        <article class="p-5 rounded-lg card-1">
-          <div class="flex items-start justify-between gap-3 mb-3">
-            <div>
-              <h4 class="font-bold text-lg">AI Q&A Listener (concept)</h4>
-              <div class="muted text-sm">Voice-driven AI Q&A</div>
-            </div>
-            <div class="chip">ChatGPT API • LangChain</div>
-          </div>
-          <img class="project-img mb-3" src="https://images.unsplash.com/photo-1581276879432-15a9a5b6bb8f?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="AI Q&A" />
-          <p class="muted text-sm">Prototype idea combining voice input and ChatGPT for an interactive assistant app. Research & POC stage.</p>
-        </article>
-
-      </div>
+        </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="mb-12 grid md:grid-cols-3 gap-6 items-start">
-      <div class="md:col-span-2">
-        <h3 class="text-2xl font-extrabold mb-3">About me</h3>
-        <p class="muted mb-4">I’m Aditya — a student and Flutter developer building Android-first cross-platform apps. I focus on clean architecture, readable code, and shipping fast MVPs. I love solving tricky UI bugs, setting up Firebase auth flows, and optimizing app performance for real users.</p>
+    <!-- ========== SKILLS SECTION ========== -->
+    <section id="skills" class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <p class="section-subtitle">Technologies I work with</p>
+            </div>
 
-        <h4 class="text-lg font-bold mt-4 mb-2">What I enjoy building</h4>
-        <ul class="muted list-disc pl-5 space-y-2">
-          <li>Productivity tools (timers, habit trackers)</li>
-          <li>Local-first apps with Isar</li>
-          <li>Firebase-backed startup MVPs</li>
-          <li>Polished UI with attention to performance</li>
-        </ul>
-      </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <!-- Skill Card 1 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-mobile-alt text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Flutter</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full"
+                            style="width: 90%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Expert - 90%</span>
+                </div>
 
-      <aside class="p-5 rounded-lg glass">
-        <div class="flex items-center gap-4 mb-3">
-          <div class="w-14 h-14 rounded-md bg-[hsl(230,45%,12%)] flex items-center justify-center">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5z" fill="white" opacity="0.9"/></svg>
-          </div>
-          <div>
-            <div class="font-semibold">Aditya Kumar</div>
-            <div class="muted text-sm">IIT aspirant • Student • Flutter dev</div>
-          </div>
+                <!-- Skill Card 2 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-code text-cyan-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Dart</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-cyan-500 to-cyan-600 h-2 rounded-full"
+                            style="width: 85%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Advanced - 85%</span>
+                </div>
+
+                <!-- Skill Card 3 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-layer-group text-purple-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Riverpod</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-purple-500 to-purple-600 h-2 rounded-full"
+                            style="width: 85%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Advanced - 85%</span>
+                </div>
+
+                <!-- Skill Card 4 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-fire text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Firebase</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-orange-500 to-orange-600 h-2 rounded-full"
+                            style="width: 80%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Advanced - 80%</span>
+                </div>
+
+                <!-- Skill Card 5 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-database text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Isar Database</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-indigo-600 to-indigo-700 h-2 rounded-full"
+                            style="width: 80%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Advanced - 80%</span>
+                </div>
+
+                <!-- Skill Card 6 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fab fa-git-alt text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Git & GitHub</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-red-500 to-red-600 h-2 rounded-full"
+                            style="width: 85%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Advanced - 85%</span>
+                </div>
+
+                <!-- Skill Card 7 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-palette text-pink-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">UI/UX Design</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-pink-500 to-pink-600 h-2 rounded-full"
+                            style="width: 85%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Advanced - 85%</span>
+                </div>
+
+                <!-- Skill Card 8 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fab fa-js text-yellow-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">JavaScript</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-yellow-500 to-yellow-600 h-2 rounded-full"
+                            style="width: 70%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Intermediate - 70%</span>
+                </div>
+
+                <!-- Skill Card 9 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-cogs text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Background Services</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-green-600 to-green-700 h-2 rounded-full"
+                            style="width: 80%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Advanced - 80%</span>
+                </div>
+
+                <!-- Skill Card 10 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-mobile text-teal-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Responsive Design</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-teal-500 to-teal-600 h-2 rounded-full"
+                            style="width: 90%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Expert - 90%</span>
+                </div>
+
+                <!-- Skill Card 11 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-brain text-violet-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Problem Solving</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-violet-500 to-violet-600 h-2 rounded-full"
+                            style="width: 85%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Advanced - 85%</span>
+                </div>
+
+                <!-- Skill Card 12 -->
+                <div class="skill-card reveal-element">
+                    <div class="text-4xl mb-4">
+                        <i class="fas fa-robot text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">AI Integration</h3>
+                    <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+                        <div class="skill-progress bg-gradient-to-r from-blue-600 to-blue-700 h-2 rounded-full"
+                            style="width: 65%"></div>
+                    </div>
+                    <span class="text-sm text-gray-600 dark:text-gray-400">Learning - 65%</span>
+                </div>
+            </div>
         </div>
-        <div class="muted text-sm">Available for freelance app maintenance, bug fixes, feature builds, and consultation. I ship readable code and provide clear explanations.</div>
-      </aside>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="mb-12">
-      <h3 class="text-2xl font-extrabold mb-4">Skills & Tools</h3>
-      <div class="flex flex-wrap gap-3">
-        <span class="chip">Flutter</span>
-        <span class="chip">Dart</span>
-        <span class="chip">Riverpod</span>
-        <span class="chip">Firebase</span>
-        <span class="chip">Isar</span>
-        <span class="chip">Git</span>
-        <span class="chip">Android</span>
-        <span class="chip">Tailwind</span>
-      </div>
+    <!-- ========== PROJECTS SECTION ========== -->
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Some of my recent work</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Project Card 1 -->
+                <div class="project-card reveal-element" data-project="1">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+                            alt="E-Commerce Platform" class="project-image">
+                        <div class="project-overlay">
+                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                            A full-featured e-commerce platform with payment integration, inventory management, and
+                            admin dashboard.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </a>
+                            <a href="#"
+                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                <i class="fab fa-github mr-1"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card reveal-element" data-project="2">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                            alt="Analytics Dashboard" class="project-image">
+                        <div class="project-overlay">
+                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Analytics Dashboard</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                            Real-time analytics dashboard with interactive charts, data visualization, and export
+                            capabilities.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </a>
+                            <a href="#"
+                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                <i class="fab fa-github mr-1"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card reveal-element" data-project="3">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop"
+                            alt="Task Management App" class="project-image">
+                        <div class="project-overlay">
+                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                            Collaborative task management tool with real-time updates, team collaboration, and progress
+                            tracking.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">TailwindCSS</span>
+                            <span class="tech-tag">WebSocket</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </a>
+                            <a href="#"
+                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                <i class="fab fa-github mr-1"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="project-card reveal-element" data-project="4">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop"
+                            alt="Weather App" class="project-image">
+                        <div class="project-overlay">
+                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Weather Forecast App</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                            Beautiful weather app with 7-day forecast, location tracking, and interactive weather maps.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">API Integration</span>
+                            <span class="tech-tag">Geolocation</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </a>
+                            <a href="#"
+                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                <i class="fab fa-github mr-1"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 -->
+                <div class="project-card reveal-element" data-project="5">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop"
+                            alt="Social Media App" class="project-image">
+                        <div class="project-overlay">
+                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Social Media Platform</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                            Full-stack social network with posts, comments, likes, real-time chat, and user profiles.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">GraphQL</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Socket.io</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </a>
+                            <a href="#"
+                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                <i class="fab fa-github mr-1"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 -->
+                <div class="project-card reveal-element" data-project="6">
+                    <div class="project-image-container">
+                        <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop"
+                            alt="Fitness Tracker" class="project-image">
+                        <div class="project-overlay">
+                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fitness Tracker</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                            Mobile-first fitness app with workout tracking, progress charts, and personalized
+                            recommendations.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </a>
+                            <a href="#"
+                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                <i class="fab fa-github mr-1"></i>Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="mb-12 grid md:grid-cols-2 gap-6 items-start">
-      <div>
-        <h3 class="text-2xl font-extrabold mb-3">Let’s build something</h3>
-        <p class="muted mb-4">Want me to maintain your app, squash bugs, or add a new feature? Send a quick brief — link to repo, screenshots, and the issue list help me estimate and start fast.</p>
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="close-modal" class="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Modal content will be injected here by JavaScript -->
+            </div>
+        </div>
+    </div>
 
-        <div class="space-y-3">
-          <div class="p-4 rounded-lg glass">
-            <div class="text-sm muted">Email</div>
-            <a href="mailto:aditya@example.com" class="font-semibold block mt-1">aditya@example.com</a>
-          </div>
-          <div class="p-4 rounded-lg glass">
-            <div class="text-sm muted">GitHub</div>
-            <a href="#" class="font-semibold block mt-1">github.com/your-username</a>
-          </div>
-        </div>
-      </div>
+    <!-- ========== EXPERIENCE SECTION ========== -->
+    <section id="experience" class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-subtitle">My professional journey</p>
+            </div>
 
-      <form class="p-6 rounded-lg glass">
-        <label class="text-sm muted">Project brief</label>
-        <textarea placeholder="Short summary, repo link, issues, deadline" class="w-full mt-2 p-3 rounded bg-transparent border" style="border-color: hsl(var(--muted-h) 24% 16%); height:140px"></textarea>
-        <div class="mt-4 flex gap-3">
-          <input type="text" placeholder="Your name" class="p-2 rounded bg-transparent border" style="border-color: hsl(var(--muted-h) 24% 16%);" />
-          <input type="email" placeholder="Email" class="p-2 rounded bg-transparent border" style="border-color: hsl(var(--muted-h) 24% 16%);" />
+            <div class="max-w-4xl mx-auto">
+                <div class="experience-timeline">
+                    <!-- Experience Item 1 -->
+                    <div class="experience-item reveal-element">
+                        <div class="experience-dot"></div>
+                        <div class="experience-line"></div>
+                        <div class="experience-content">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                                <h3 class="text-xl font-bold">Senior Full Stack Developer</h3>
+                                <span class="text-sm text-primary-500 font-semibold">2022 - Present</span>
+                            </div>
+                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-3">TechCorp Solutions</h4>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Led development of microservices architecture serving 1M+ users</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Mentored team of 5 junior developers and conducted code reviews</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Improved application performance by 40% through optimization</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Implemented CI/CD pipelines reducing deployment time by 60%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 2 -->
+                    <div class="experience-item reveal-element">
+                        <div class="experience-dot"></div>
+                        <div class="experience-line"></div>
+                        <div class="experience-content">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                                <h3 class="text-xl font-bold">Full Stack Developer</h3>
+                                <span class="text-sm text-primary-500 font-semibold">2020 - 2022</span>
+                            </div>
+                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-3">Digital Innovations Inc.</h4>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Built and maintained 15+ client web applications using React and
+                                        Node.js</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Collaborated with UX designers to implement responsive designs</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Integrated third-party APIs and payment gateways</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Achieved 95%+ test coverage with automated testing</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 3 -->
+                    <div class="experience-item reveal-element">
+                        <div class="experience-dot"></div>
+                        <div class="experience-line"></div>
+                        <div class="experience-content">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                                <h3 class="text-xl font-bold">Frontend Developer</h3>
+                                <span class="text-sm text-primary-500 font-semibold">2019 - 2020</span>
+                            </div>
+                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-3">StartupHub</h4>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Developed responsive user interfaces for SaaS products</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Optimized page load times reducing bounce rate by 25%</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Implemented A/B testing to improve user engagement</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Experience Item 4 -->
+                    <div class="experience-item reveal-element">
+                        <div class="experience-dot"></div>
+                        <div class="experience-content">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                                <h3 class="text-xl font-bold">Junior Web Developer</h3>
+                                <span class="text-sm text-primary-500 font-semibold">2018 - 2019</span>
+                            </div>
+                            <h4 class="text-lg text-gray-600 dark:text-gray-400 mb-3">WebWorks Agency</h4>
+                            <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Assisted in building custom WordPress themes and plugins</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Maintained and updated client websites for optimal performance</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-chevron-right text-primary-500 mt-1 mr-2 text-sm"></i>
+                                    <span>Learned modern development practices and agile methodologies</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mt-4">
-          <button type="button" class="px-4 py-2 rounded" style="background: hsl(var(--accent-h) 58% 18%);">Send message</button>
-        </div>
-      </form>
     </section>
 
-    <footer class="py-6 border-t mt-8" style="border-color: hsl(var(--muted-h) 20% 14%);">
-      <div class="flex items-center justify-between muted">
-        <div>© <span id="year"></span> Aditya Kumar — Built with ❤️ and Flutter</div>
-        <div class="flex gap-3">
-          <a href="#" class="muted">GitHub</a>
-          <a href="#" class="muted">LinkedIn</a>
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section id="testimonials" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="section-title">Testimonials</h2>
+                <p class="section-subtitle">What people say about me</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Testimonial Carousel -->
+                <div class="testimonial-carousel">
+                    <div class="testimonial-track">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-card active">
+                            <div class="flex items-center mb-4">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
+                                    alt="Sarah Johnson" class="w-16 h-16 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-lg">Sarah Johnson</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">CEO, TechStartup Inc.</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 italic">
+                                "John is an exceptional developer who consistently delivers high-quality work. His
+                                attention to detail
+                                and ability to solve complex problems made our project a huge success. Highly
+                                recommended!"
+                            </p>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-card">
+                            <div class="flex items-center mb-4">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"
+                                    alt="Michael Chen" class="w-16 h-16 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-lg">Michael Chen</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">CTO, Digital Solutions</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 italic">
+                                "Working with John was a pleasure. His technical expertise and professional approach
+                                helped us launch
+                                our product ahead of schedule. He's a true professional and team player."
+                            </p>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-card">
+                            <div class="flex items-center mb-4">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
+                                    alt="Emily Rodriguez" class="w-16 h-16 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-lg">Emily Rodriguez</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">Product Manager, InnovateCo</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 italic">
+                                "John's ability to understand our business requirements and translate them into elegant
+                                technical solutions
+                                is remarkable. He goes above and beyond to ensure client satisfaction."
+                            </p>
+                        </div>
+
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-card">
+                            <div class="flex items-center mb-4">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop"
+                                    alt="David Williams" class="w-16 h-16 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-lg">David Williams</h4>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">Founder, WebVentures</p>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 italic">
+                                "Outstanding work! John transformed our outdated platform into a modern, scalable
+                                application.
+                                His expertise in both frontend and backend development is truly impressive."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Carousel Controls -->
+                    <div class="flex justify-center items-center mt-8 gap-4">
+                        <button id="prev-testimonial" class="carousel-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="flex gap-2" id="testimonial-dots">
+                            <button class="carousel-dot active" data-index="0"></button>
+                            <button class="carousel-dot" data-index="1"></button>
+                            <button class="carousel-dot" data-index="2"></button>
+                            <button class="carousel-dot" data-index="3"></button>
+                        </div>
+                        <button id="next-testimonial" class="carousel-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's work together on your next project</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Contact Info -->
+                    <div class="reveal-element">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope text-primary-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Email</h4>
+                                    <a href="mailto:iamadityafreelancer@gmail.com"
+                                        class="text-gray-600 dark:text-gray-300 hover:text-primary-500">
+                                        iamadityafreelancer@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-graduation-cap text-primary-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Current Status</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Class 9 Student & JEE Aspirant</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div
+                                    class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-primary-500 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Location</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">India</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h4 class="font-semibold mb-4">Follow Me</h4>
+                            <div class="flex gap-3">
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon">
+                                    <i class="fab fa-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="reveal-element">
+                        <form id="contact-form" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Name *</label>
+                                <input type="text" id="name" name="name" class="form-input" placeholder="Your name"
+                                    required>
+                                <span class="form-error hidden" id="name-error">Please enter your name</span>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Email *</label>
+                                <input type="email" id="email" name="email" class="form-input"
+                                    placeholder="your.email@example.com" required>
+                                <span class="form-error hidden" id="email-error">Please enter a valid email</span>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-2">Message *</label>
+                                <textarea id="message" name="message" rows="5" class="form-input"
+                                    placeholder="Your message..." required></textarea>
+                                <span class="form-error hidden" id="message-error">Please enter a message</span>
+                            </div>
+
+                            <button type="submit" class="btn-primary w-full">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+
+                            <div id="form-message" class="hidden"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- About Column -->
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">Aditya Kumar</h3>
+                    <p class="text-sm mb-4">
+                        Flutter Developer and JEE Aspirant building cool mobile apps while preparing for IIT.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="social-icon-footer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-icon-footer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-icon-footer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon-footer">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-primary-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-primary-400 transition-colors">About</a></li>
+                        <li><a href="#projects" class="hover:text-primary-400 transition-colors">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-primary-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Column -->
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">Stay Connected</h3>
+                    <p class="text-sm mb-4">Get updates about my latest projects and blog posts.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Your email"
+                            class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:border-primary-500 focus:outline-none text-sm">
+                        <button class="btn-primary px-4 py-2">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm">&copy; 2024 Adipage. All rights reserved.</p>
+                <p class="text-sm mt-2 md:mt-0">Built with <i class="fas fa-heart text-red-500"></i> using HTML, CSS &
+                    JavaScript</p>
+            </div>
+        </div>
     </footer>
 
-  </div>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
 </body>
+
 </html>
