@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Aditya Kumar - Flutter Developer & JEE Aspirant</title>
 
     <!-- TailwindCSS CDN -->
@@ -53,7 +53,7 @@
     <!-- ========== HEADER / NAVIGATION ========== -->
     <header
         class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm transition-all duration-300">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="container mx-auto px-6 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 md:h-20">
                 <!-- Logo -->
                 <a href="#home"
@@ -83,15 +83,22 @@
 
                     <!-- Mobile Menu Button -->
                     <button id="mobile-menu-button"
-                        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors z-50 relative">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <div class="flex flex-col space-y-3">
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-menu-overlay" class="mobile-menu-overlay md:hidden"></div>
+
+            <!-- Mobile Menu Container -->
+            <div id="mobile-menu" class="mobile-menu-container md:hidden">
+                <button id="mobile-menu-close"
+                    class="absolute top-6 right-6 p-2 text-gray-600 dark:text-gray-300 hover:text-primary-500 transition-colors">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+                <div class="flex flex-col space-y-3 mt-8">
                     <a href="#home" class="nav-link-mobile">Home</a>
                     <a href="#about" class="nav-link-mobile">About</a>
                     <a href="#skills" class="nav-link-mobile">Skills</a>
@@ -119,8 +126,8 @@
             </div>
         </div>
 
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+        <div class="container mx-auto px-6 sm:px-6 lg:px-8">
+            <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
                 <!-- Hero Content -->
                 <div class="flex-1 text-center md:text-left reveal-element">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
@@ -128,8 +135,8 @@
                             class="bg-gradient-to-r from-primary-500 to-purple-600 bg-clip-text text-transparent">Aditya
                             Kumar</span>
                     </h1>
-                    <h2 class="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-6">
-                        Flutter Developer & JEE Aspirant
+                    <h2 class="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-6 h-8">
+                        <span class="typing-text"></span><span class="typing-cursor"></span>
                     </h2>
                     <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">
                         A student, Flutter dev, and future engineer building cool mobile apps while preparing for IIT.
@@ -151,7 +158,7 @@
                 <div class="flex-1 flex justify-center reveal-element">
                     <div class="relative p-6">
                         <div
-                            class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white dark:border-gray-800 shadow-2xl profile-image">
+                            class="w-40 h-40 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white dark:border-gray-800 shadow-2xl profile-image">
                             <img src="assets/profile.jpg" alt="Profile" class="w-full h-full object-cover">
                         </div>
                         <!-- Decorative Ring -->
@@ -174,7 +181,7 @@
 
     <!-- ========== ABOUT SECTION ========== -->
     <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-6 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-element">
                 <h2 class="section-title">About Me</h2>
                 <p class="section-subtitle">Get to know me better</p>
@@ -284,13 +291,14 @@
 
     <!-- ========== SKILLS SECTION ========== -->
     <section id="skills" class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-6 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-element">
                 <h2 class="section-title">Skills & Expertise</h2>
                 <p class="section-subtitle">Technologies I work with</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            <div
+                class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto stagger-grid">
                 <!-- Skill Card 1 -->
                 <div class="skill-card reveal-element">
                     <div class="text-4xl mb-4">
@@ -452,42 +460,39 @@
 
     <!-- ========== PROJECTS SECTION ========== -->
     <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-6 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-element">
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="section-subtitle">Some of my recent work</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto stagger-grid">
                 <!-- Project Card 1 -->
                 <div class="project-card reveal-element" data-project="1">
                     <div class="project-image-container">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
                             alt="E-Commerce Platform" class="project-image">
-                        <div class="project-overlay">
-                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                            A full-featured e-commerce platform with payment integration, inventory management, and
-                            admin dashboard.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Stripe</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
-                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
-                            </a>
-                            <a href="#"
-                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
-                                <i class="fab fa-github mr-1"></i>Source Code
-                            </a>
+                        <div class="project-content">
+                            <h3 class="text-xl font-bold mb-2">E-Commerce Platform</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                A full-featured e-commerce platform with payment integration, inventory management, and
+                                admin dashboard.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Stripe</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                    <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                                </a>
+                                <a href="#"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                    <i class="fab fa-github mr-1"></i>Source Code
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -497,30 +502,27 @@
                     <div class="project-image-container">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
                             alt="Analytics Dashboard" class="project-image">
-                        <div class="project-overlay">
-                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Analytics Dashboard</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                            Real-time analytics dashboard with interactive charts, data visualization, and export
-                            capabilities.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
-                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
-                            </a>
-                            <a href="#"
-                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
-                                <i class="fab fa-github mr-1"></i>Source Code
-                            </a>
+                        <div class="project-content">
+                            <h3 class="text-xl font-bold mb-2">Analytics Dashboard</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Real-time analytics dashboard with interactive charts, data visualization, and export
+                                capabilities.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">D3.js</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                    <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                                </a>
+                                <a href="#"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                    <i class="fab fa-github mr-1"></i>Source Code
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -530,30 +532,28 @@
                     <div class="project-image-container">
                         <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop"
                             alt="Task Management App" class="project-image">
-                        <div class="project-overlay">
-                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Task Management App</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                            Collaborative task management tool with real-time updates, team collaboration, and progress
-                            tracking.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">TailwindCSS</span>
-                            <span class="tech-tag">WebSocket</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
-                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
-                            </a>
-                            <a href="#"
-                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
-                                <i class="fab fa-github mr-1"></i>Source Code
-                            </a>
+                        <div class="project-content">
+                            <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Collaborative task management tool with real-time updates, team collaboration, and
+                                progress
+                                tracking.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">TailwindCSS</span>
+                                <span class="tech-tag">WebSocket</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                    <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                                </a>
+                                <a href="#"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                    <i class="fab fa-github mr-1"></i>Source Code
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -561,30 +561,26 @@
                 <!-- Project Card 4 -->
                 <div class="project-card reveal-element" data-project="4">
                     <div class="project-image-container">
-                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop"
-                            alt="Weather App" class="project-image">
-                        <div class="project-overlay">
-                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Weather Forecast App</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                            Beautiful weather app with 7-day forecast, location tracking, and interactive weather maps.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">API Integration</span>
-                            <span class="tech-tag">Geolocation</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
-                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
-                            </a>
-                            <a href="#"
-                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
-                                <i class="fab fa-github mr-1"></i>Source Code
-                            </a>
+                        <img src="assets/project1.jpg" alt="Project 1" class="project-image">
+                        <div class="project-content">
+                            <h3 class="text-xl font-bold mb-2">E-Commerce App</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">A full-featured shopping app built
+                                with
+                                Flutter and Firebase.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span
+                                    class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 rounded-full text-xs">Flutter</span>
+                                <span
+                                    class="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 rounded-full text-xs">Firebase</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="#"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors"><i
+                                        class="fab fa-github text-lg"></i></a>
+                                <a href="#"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors"><i
+                                        class="fas fa-external-link-alt text-lg"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -594,29 +590,27 @@
                     <div class="project-image-container">
                         <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop"
                             alt="Social Media App" class="project-image">
-                        <div class="project-overlay">
-                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Social Media Platform</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                            Full-stack social network with posts, comments, likes, real-time chat, and user profiles.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">GraphQL</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Socket.io</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
-                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
-                            </a>
-                            <a href="#"
-                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
-                                <i class="fab fa-github mr-1"></i>Source Code
-                            </a>
+                        <div class="project-content">
+                            <h3 class="text-xl font-bold mb-2">Social Media Platform</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Full-stack social network with posts, comments, likes, real-time chat, and user
+                                profiles.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tech-tag">Next.js</span>
+                                <span class="tech-tag">GraphQL</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Socket.io</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                    <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                                </a>
+                                <a href="#"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                    <i class="fab fa-github mr-1"></i>Source Code
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -626,30 +620,27 @@
                     <div class="project-image-container">
                         <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop"
                             alt="Fitness Tracker" class="project-image">
-                        <div class="project-overlay">
-                            <button class="btn-secondary btn-sm view-project-btn">View Details</button>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Fitness Tracker</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-                            Mobile-first fitness app with workout tracking, progress charts, and personalized
-                            recommendations.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="tech-tag">React Native</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Express</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                        <div class="flex gap-3">
-                            <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
-                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
-                            </a>
-                            <a href="#"
-                                class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
-                                <i class="fab fa-github mr-1"></i>Source Code
-                            </a>
+                        <div class="project-content">
+                            <h3 class="text-xl font-bold mb-2">Fitness Tracker</h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                                Mobile-first fitness app with workout tracking, progress charts, and personalized
+                                recommendations.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="tech-tag">React Native</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">Express</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <a href="#" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                                    <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                                </a>
+                                <a href="#"
+                                    class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 text-sm font-medium">
+                                    <i class="fab fa-github mr-1"></i>Source Code
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -671,7 +662,7 @@
 
     <!-- ========== EXPERIENCE SECTION ========== -->
     <section id="experience" class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-6 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-element">
                 <h2 class="section-title">Work Experience</h2>
                 <p class="section-subtitle">My professional journey</p>
@@ -801,7 +792,7 @@
 
     <!-- ========== TESTIMONIALS SECTION ========== -->
     <section id="testimonials" class="py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-6 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-element">
                 <h2 class="section-title">Testimonials</h2>
                 <p class="section-subtitle">What people say about me</p>
@@ -931,7 +922,7 @@
 
     <!-- ========== CONTACT SECTION ========== -->
     <section id="contact" class="py-20 bg-white dark:bg-gray-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-6 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal-element">
                 <h2 class="section-title">Get In Touch</h2>
                 <p class="section-subtitle">Let's work together on your next project</p>
@@ -1037,7 +1028,7 @@
 
     <!-- ========== FOOTER ========== -->
     <footer class="bg-gray-900 text-gray-300 py-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto px-6 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <!-- About Column -->
                 <div>
