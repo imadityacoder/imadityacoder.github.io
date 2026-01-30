@@ -1,0 +1,65 @@
+<!-- ========== HERO SECTION ========== -->
+<section id="home" class="min-h-screen flex items-center justify-center pt-16 md:pt-20 relative overflow-hidden">
+    <!-- Background Gradient Shapes -->
+    <div class="absolute inset-0 -z-10">
+        <div
+            class="absolute top-20 left-10 w-72 h-72 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob">
+        </div>
+        <div
+            class="absolute top-40 right-10 w-72 h-72 bg-primary-300 dark:bg-primary-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300 dark:bg-pink-900 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-xl opacity-70 animate-blob animation-delay-4000">
+        </div>
+    </div>
+
+    <div class="container mx-auto px-6 sm:px-6 lg:px-8">
+        <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+            <!-- Hero Content -->
+            <div class="flex-1 text-center md:text-left reveal-element">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
+                    Hi, I'm <span class="bg-gradient-to-r from-primary-500 to-purple-600 bg-clip-text">Aditya
+                        Kumar</span>
+                </h1>
+                <h2 class="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 mb-6 h-8">
+                    <span class="typing-text"></span><span class="typing-cursor"></span>
+                </h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">
+                    A student, Flutter dev, and future engineer building cool mobile apps while preparing for IIT.
+                    Dreaming big, MIT-level big.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-envelope mr-2"></i>Contact Me
+                    </a>
+                    <a href="assets/resume.pdf" class="btn-secondary" download>
+                        <i class="fas fa-download mr-2"></i>Download Resume
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Image -->
+            <div class="flex-1 flex justify-center reveal-element">
+                <div class="relative p-6">
+                    <div
+                        class="w-40 h-40 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-white dark:border-gray-800 shadow-2xl profile-image">
+                        <img src="assets/profile.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decorative Ring -->
+                    <div class="absolute inset-0 rounded-full border-4 border-primary-500 opacity-20 animate-ping-slow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <a href="#about"
+            class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+    </div>
+</section>

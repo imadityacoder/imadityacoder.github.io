@@ -1,0 +1,91 @@
+/* ========================================
+   EXPERIENCE SECTION
+   ======================================== */
+
+.experience-timeline {
+    position: relative;
+}
+
+.experience-item {
+    position: relative;
+    padding-left: 3rem;
+    padding-bottom: 3rem;
+}
+
+.experience-item:last-child {
+    padding-bottom: 0;
+}
+
+.experience-dot {
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: linear-gradient(135deg, #0ea5e9, #9333ea);
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.2);
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.dark .experience-dot {
+    border-color: #111827;
+}
+
+.experience-item:hover .experience-dot {
+    transform: scale(1.3);
+}
+
+.experience-line {
+    position: absolute;
+    left: 0.5rem;
+    top: 2rem;
+    width: 2px;
+    height: calc(100% - 1rem);
+    background: linear-gradient(to bottom, #0ea5e9, #9333ea);
+    opacity: 0.3;
+}
+
+.experience-item:last-child .experience-line {
+    display: none;
+}
+
+.experience-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.dark .experience-content {
+    background: #1f2937;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.experience-content:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark .experience-content:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .experience-item {
+        padding-left: 1.5rem;
+    }
+
+    .experience-dot {
+        width: 1rem;
+        height: 1rem;
+        left: -0.125rem;
+    }
+
+    .experience-line {
+        left: 0.375rem;
+    }
+}

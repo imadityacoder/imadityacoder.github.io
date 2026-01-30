@@ -1,0 +1,105 @@
+<!-- ========== CONTACT SECTION ========== -->
+<section id="contact" class="py-20 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-6 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal-element">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Let's work together on your next project</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div class="reveal-element">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-envelope text-primary-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Email</h4>
+                                <a href="mailto:iamadityafreelancer@gmail.com"
+                                    class="text-gray-600 dark:text-gray-300 hover:text-primary-500">
+                                    iamadityafreelancer@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-graduation-cap text-primary-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Current Status</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Class 9 Student & JEE Aspirant</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-primary-500 text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-300">India</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Follow Me</h4>
+                        <div class="flex gap-3">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="reveal-element">
+                    <form id="contact-form" action="https://formspree.io/f/mgoyljrl" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">Name *</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Your name"
+                                required>
+                            <span class="form-error hidden" id="name-error">Please enter your name</span>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email *</label>
+                            <input type="email" id="email" name="email" class="form-input"
+                                placeholder="your.email@example.com" required>
+                            <span class="form-error hidden" id="email-error">Please enter a valid email</span>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">Message *</label>
+                            <textarea id="message" name="message" rows="5" class="form-input"
+                                placeholder="Your message..." required></textarea>
+                            <span class="form-error hidden" id="message-error">Please enter a message</span>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+
+                        <div id="form-message" class="hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

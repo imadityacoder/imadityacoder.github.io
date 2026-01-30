@@ -1,0 +1,25 @@
+/* ========================================
+   MAIN STYLESHEET
+   Imports all modules
+   ======================================== */
+
+/* 1. Base (Variables, Reset, Typography) */
+@import url('./base.css');
+
+/* 2. Animations */
+@import url('./animations.css');
+
+/* 3. Components (Buttons, Forms, Modals, etc.) */
+@import url('./components.css');
+
+/* 4. Layout (Header, Footer, Nav) */
+@import url('./layout.css');
+
+/* 5. Sections */
+@import url('./sections/hero.css');
+@import url('./sections/about.css');
+@import url('./sections/skills.css');
+@import url('./sections/projects.css');
+@import url('./sections/experience.css');
+@import url('./sections/testimonials.css');
+@import url('./sections/contact.css');
