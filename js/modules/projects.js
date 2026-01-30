@@ -118,11 +118,11 @@ export function initProjects() {
                         </ul>
                     </div>
                     
-                    <div class="flex gap-4">
-                        <a href="${project.demoUrl}" class="btn-primary flex-1">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="${project.demoUrl}" class="btn-primary w-full sm:w-auto flex-1 text-center justify-center">
                             <i class="fas fa-external-link-alt mr-2"></i>View Live Demo
                         </a>
-                        <a href="${project.codeUrl}" class="btn-secondary flex-1">
+                        <a href="${project.codeUrl}" class="btn-secondary w-full sm:w-auto flex-1 text-center justify-center">
                             <i class="fab fa-github mr-2"></i>View Source Code
                         </a>
                     </div>

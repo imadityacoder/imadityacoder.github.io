@@ -163,6 +163,15 @@
     background: #1f2937;
 }
 
+@media (max-width: 640px) {
+    .modal-content {
+        padding: 1.25rem;
+        width: 95%;
+        max-height: 85vh;
+        margin: 0 auto;
+    }
+}
+
 .modal-close {
     position: absolute;
     top: 1rem;
@@ -178,6 +187,16 @@
     justify-content: center;
     transition: all 0.3s ease;
     color: #374151;
+    z-index: 10;
+}
+
+@media (max-width: 640px) {
+    .modal-close {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+    }
 }
 
 .dark .modal-close {
